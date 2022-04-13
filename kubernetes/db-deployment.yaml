@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
-  namespace: ssrivastava
+  name: <NAME>
+  namespace: db-deployment
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/ssrivastava-harbor-project/app:971c881-51fe2e2
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/ssrivastava-harbor-project/db:971c881-51fe2e2
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
