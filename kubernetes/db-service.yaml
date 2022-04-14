@@ -9,5 +9,5 @@ spec:
     app: db
   ports:
     - name: "5432"
-      port: "5432"
-      targetPort: "5432"
+      port: 5432
+      targetPort: 5432
